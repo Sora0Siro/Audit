@@ -27,20 +27,21 @@ namespace AuditWFA
 
             setAuditories();
             hideButtons();
+            showAddButtons();
         }
 
-        public void hideButtons()
+        //events
+        private void groupBox3_Enter(object sender, EventArgs e)
         {
-            btt_OK.Visible = btt_Cancel.Visible = false;
-            buttonsEnabled = false;
-            readOnly(buttonsEnabled);
+
         }
 
-        public void showButtons()
+        private void btt_Add_Click(object sender, EventArgs e)
         {
-            btt_OK.Visible = btt_Cancel.Visible = true;
-            buttonsEnabled = true;
-            readOnly(buttonsEnabled);
+            gB_Adding.Visible = true;
+            btt_Add.Visible = true;
+            btt_ClearAdd.Visible = true;
+            setExtendedWindowSize();
         }
 
         private void btt_Edit_Click(object sender, EventArgs e)
@@ -49,7 +50,7 @@ namespace AuditWFA
             {
                 hideButtons();
             }
-            else if(!buttonsEnabled)
+            else if (!buttonsEnabled)
             {
                 showButtons();
             }
@@ -75,33 +76,78 @@ namespace AuditWFA
             {
                 MessageBox.Show("ADD INFO");
             }
-            
-        }
-
-        private void setFields()
-        {
-            txt_Places.Text = auditoriesDC[dropList_Auditory.Text][0];
-            txt_PCs.Text = auditoriesDC[dropList_Auditory.Text][1];
-            txt_Projector.Text = auditoriesDC[dropList_Auditory.Text][2];
-            txt_Condition.Text = auditoriesDC[dropList_Auditory.Text][3];
-            txt_Secure.Text = auditoriesDC[dropList_Auditory.Text][4];
-        }
-
-        private void clearFields()
-        {
-            txt_Places.Text = "";
-            txt_PCs.Text = "";
-            txt_Projector.Text = "";
-            txt_Condition.Text = "";
-            txt_Secure.Text = "";
         }
 
         private void dropList_Auditory_TextChanged(object sender, EventArgs e)
         {
-            clearFields();
-            setFields();
+            if (dropList_Auditory.Text != "" && dropList_Auditory.Text != " ")
+            {
+                clearFields();
+                setFields();
+            }
         }
 
+        private void btt_Add_Click_1(object sender, EventArgs e)
+        {
+            if (checkAddingFields())
+            {
+                if (auditoriesDC.ContainsKey(txt_AuditoryAdd.Text))
+                {
+                    MessageBox.Show("Данная аудитория уже существует");
+                }
+                else if (!auditoriesDC.ContainsKey(txt_AuditoryAdd.Text))
+                {
+                    List<string> tmp = new List<string>();
+
+                    tmp.Add(txt_PlacesAdd.Text);
+                    tmp.Add(txt_PCsAdd.Text);
+                    if (chck_Projector.Checked) tmp.Add("есть");
+                    else tmp.Add("отсутствует");
+                    if (chck_Condition.Checked) tmp.Add("есть");
+                    else tmp.Add("отсутствует");
+                    if (chck_Security.Checked) tmp.Add("есть");
+                    else tmp.Add("отсутствует");
+
+                    auditoriesDC.Add(txt_AuditoryAdd.Text, tmp);
+                    clearAddingFields();
+                    MessageBox.Show("Аудитория была успешно добавлена");
+                    clearDropListAuditories();
+                    setAuditories();
+                    saveEditedAuditories();
+                }
+            }
+            else if (!checkAddingFields())
+            {
+                MessageBox.Show("Некоторые поля незаполнены");
+            }
+        }
+
+        private void btt_Clear_Click(object sender, EventArgs e)
+        {
+            clearFields();
+        }
+
+        private void btt_ClearAdd_Click(object sender, EventArgs e)
+        {
+            clearAddingFields();
+        }
+
+        private void btt_Delete_Click(object sender, EventArgs e)
+        {
+            //delete selected auditory
+            if (checkForFilledFields())
+            {
+                auditoriesDC.Remove(dropList_Auditory.Text);
+                saveEditedAuditories();
+                clearDropListAuditories();
+                setAuditories();
+                clearFields();
+                clearAudDropList();
+                MessageBox.Show("Удаление было успешно");
+            }
+        }
+
+        //methods
         private void readOnly(bool state)
         {
             txt_Places.ReadOnly = !state;
@@ -109,27 +155,6 @@ namespace AuditWFA
             txt_Projector.ReadOnly = !state;
             txt_Condition.ReadOnly = !state;
             txt_Secure.ReadOnly = !state;
-        }
-
-        private void setAuditories()
-        {
-            foreach(KeyValuePair<string,List<string>> dc in auditoriesDC)
-            {
-                dropList_Auditory.Items.Add(dc.Key);
-            }
-        }
-
-        private bool checkForFilledFields()
-        {
-            if(txt_Places.Text != "" && txt_Places.Text != " " && txt_PCs.Text != "" && txt_PCs.Text != " " && txt_Projector.Text != "" && txt_Projector.Text != " " && txt_Condition.Text != "" && txt_Condition.Text != " " && txt_Secure.Text != "" && txt_Secure.Text != " ")
-            {
-                allFieldsFilled = true;
-            }
-            else
-            {
-                allFieldsFilled = false;
-            }
-            return allFieldsFilled;
         }
 
         private void saveEditedAuditories()
@@ -152,6 +177,129 @@ namespace AuditWFA
             string[] contents = conts.Select(i => i.ToString()).ToArray();
 
             File.WriteAllLines(AuditoriesPath, contents, Encoding.Unicode);
+        }
+
+        //hide
+        private void hideAdding()
+        {
+            gB_Adding.Visible = false;
+        }
+
+        public void hideButtons()
+        {
+            btt_Save.Visible = btt_Clear.Visible = btt_Delete.Visible = false;
+            buttonsEnabled = false;
+            readOnly(buttonsEnabled);
+
+            //some(buttonsEnabled);
+        }
+
+        //show
+        private void showAddButtons()
+        {
+            btt_AuditoryNew.Visible = true;
+            hideAdding();
+            setDefaultWindowSize();
+        }
+
+        public void showButtons()
+        {
+            btt_Save.Visible = btt_Clear.Visible = btt_Delete.Visible = true;
+            buttonsEnabled = true;
+            readOnly(buttonsEnabled);
+
+            //some(buttonsEnabled);
+        }
+
+        private void showGBAdding(bool state)
+        {
+            if (!state) gB_Adding.Visible = false;
+            else if (state) hideAdding();
+        }
+
+        //check
+        private bool checkForFilledFields()
+        {
+            if (dropList_Auditory.Text != "" && dropList_Auditory.Text != " " && txt_Places.Text != "" && txt_Places.Text != " " && txt_PCs.Text != "" && txt_PCs.Text != " " && txt_Projector.Text != "" && txt_Projector.Text != " " && txt_Condition.Text != "" && txt_Condition.Text != " " && txt_Secure.Text != "" && txt_Secure.Text != " ")
+            {
+                allFieldsFilled = true;
+            }
+            else
+            {
+                allFieldsFilled = false;
+            }
+            return allFieldsFilled;
+        }
+
+        private bool checkAddingFields()
+        {
+            bool state = true;
+            if (txt_AuditoryAdd.Text != "" && txt_AuditoryAdd.Text != " " && txt_PlacesAdd.Text != "" && txt_PlacesAdd.Text != " " && txt_PCsAdd.Text != "" && txt_PCsAdd.Text != " ")
+            {
+                return state;
+            }
+            else
+            {
+                return !state;
+            }
+        }
+
+        //sets
+        private void setDefaultWindowSize()
+        {
+            this.Width = 445;
+        }
+
+        private void setExtendedWindowSize()
+        {
+            this.Width = 785;
+        }
+
+        private void setFields()
+        {
+            txt_Places.Text = auditoriesDC[dropList_Auditory.Text][0];
+            txt_PCs.Text = auditoriesDC[dropList_Auditory.Text][1];
+            txt_Projector.Text = auditoriesDC[dropList_Auditory.Text][2];
+            txt_Condition.Text = auditoriesDC[dropList_Auditory.Text][3];
+            txt_Secure.Text = auditoriesDC[dropList_Auditory.Text][4];
+        }
+
+        private void setAuditories()
+        {
+            foreach (KeyValuePair<string, List<string>> dc in auditoriesDC)
+            {
+                dropList_Auditory.Items.Add(dc.Key);
+            }
+        }
+
+        //clear
+        private void clearAddingFields()
+        {
+            txt_AuditoryAdd.Text = "";
+            txt_PlacesAdd.Text = "";
+            txt_PCsAdd.Text = "";
+            chck_Projector.Checked = false;
+            chck_Condition.Checked = false;
+            chck_Security.Checked = false;
+        }
+
+        private void clearFields()
+        {
+            txt_Places.Text = "";
+            txt_PCs.Text = "";
+            txt_Projector.Text = "";
+            txt_Condition.Text = "";
+            txt_Secure.Text = "";
+        }
+
+        private void clearAudDropList()
+        {
+            dropList_Auditory.Text = "";
+        }
+
+        private void clearDropListAuditories()
+        {
+            dropList_Auditory.Items.Clear();
         }
     }
 }

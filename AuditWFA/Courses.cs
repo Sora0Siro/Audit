@@ -29,45 +29,6 @@ namespace AuditWFA
         {
             return this.courses;
         }
-        /*
-        public void ReadCoursesFromFile(Dictionary<string, List<string>> courseDC)
-        {
-            foreach (string file in Directory.EnumerateFiles(FacultiesDirectory, "*.txt"))
-            {
-                string[] courses = File.ReadAllLines(file, Encoding.GetEncoding(1251));
-                List<string> names = new List<string>();
-                string tmpKey = "";
-
-                for(int i = 0; i<courses.Length; i++)
-                {
-                    string s = courses[i];
-
-                    if (s.Contains("course") || s.Contains("Course") || s.Contains("Masters"))
-                    {
-                        tmpKey = s;
-                    }
-                    else if (s != " " && s != "")
-                    {
-                        names.Add(s);
-                    }
-                    if (s == "" || s == " " || i == courses.Length-1)
-                    {
-                        courseDC.Add(tmpKey, names);
-                        names = new List<string>();
-                        tmpKey = "";
-                    }
-                }
-            }
-
-            foreach(KeyValuePair<string,List<string>> s in courseDC)
-            {
-                foreach (string str in s.Value)
-                {
-                    MessageBox.Show(str);
-                }
-            }
-        }
-        */
         public void ReadAllCourses(Dictionary<string, List<string>> coursesDC,
         Dictionary<string, Dictionary<string, List<string>>> cathDC,
         Dictionary<string, Dictionary<string, Dictionary<string, List<string>>>> facultDC,

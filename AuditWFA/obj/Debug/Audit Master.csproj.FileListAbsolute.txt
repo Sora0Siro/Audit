@@ -1,0 +1,3 @@
+C:\Users\aNs\Desktop\Audit-master\AuditWFA\bin\Debug\AuditWFA.exe.config
+C:\Users\aNs\Desktop\Audit-master\AuditWFA\obj\Debug\AuditWFA.exe
+C:\Users\aNs\Desktop\Audit-master\AuditWFA\obj\Debug\AuditWFA.pdb

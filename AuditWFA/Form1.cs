@@ -21,6 +21,7 @@ namespace AuditWFA
         private string FacultiesDirectory;
         private string AuditoriesPath;
         private string FullDirectory;
+        private string dayScheduleInfo_Path;
         private List<Teacher> teachers;
         private Dictionary<string, List<string>> coursesDC;
         private Dictionary<string, Dictionary<string, List<string>>> cathDC;
@@ -46,6 +47,20 @@ namespace AuditWFA
             c.ReadAllCourses(coursesDC, cathDC, facultDC,FacultiesDirectory);
 
             setFacultiesNew();
+        }
+
+        public void all()
+        {
+            foreach (KeyValuePair<string, Dictionary<string, Dictionary<string, List<string>>>> facult in facultDC)
+            {
+                foreach (KeyValuePair<string, Dictionary<string, List<string>>> cathedr in facult.Value)
+                {
+                    foreach (KeyValuePair<string, List<string>> course in cathedr.Value)
+                    {
+
+                    }
+                }
+            }
         }
 
         //methods
@@ -77,6 +92,7 @@ namespace AuditWFA
                     }
 
                     this.Table.Rows.Add(textField_Teacher.Text, textField_Subject.Text, textField_Group.Text, textField_Aud.Text, textField_Number.Text);
+                    saveSchedule();
                 }
                 else
                 {
@@ -123,8 +139,6 @@ namespace AuditWFA
                         }
                         else
                         {
-                            permissAdd = true;
-                            return permissAdd;
                         }
                     }
                 }
@@ -228,6 +242,25 @@ namespace AuditWFA
             }
         }
 
+        private void addToDC(string key, List<string> list)
+        {
+            List<string> tmp = list.ToList<string>();
+            tmp.RemoveAt(0);
+
+            if (dc.ContainsKey(key))
+            {
+                dc[key].Add(tmp);
+            }
+            else
+            {
+                List<List<string>> n = new List<List<string>>();
+                n.Add(tmp);
+
+                dc.Add(key, n);
+            }
+            tmp = new List<string>();
+        }
+
         //events
         private void textField_Teacher_TextChanged(object sender, EventArgs e)
         {
@@ -269,8 +302,9 @@ namespace AuditWFA
             string totalPath = "";
             totalPath = FacultiesDirectory + "\\" + dropList_Faculty.Text + "\\" + dropList_Cath.Text; //teacher folder, course .txt
             var directories = Directory.GetDirectories(totalPath);
-            setTeacherInfo(directories[0]);
+            setTeacherInfo(directories[1]);
             setDropList_Course();
+            loadSchedule();
             //Table.column
         }
 
@@ -292,6 +326,20 @@ namespace AuditWFA
             inf.ShowDialog();
         }
 
+        private void dtp_Teach_ValueChanged(object sender, EventArgs e)
+        {
+            loadSchedule();
+        }
+
+        private void btt_DeleteSchLine_Click(object sender, EventArgs e)
+        {
+            if(Table.CurrentCell.Value != null && Table.CurrentCell.Value != " ")
+            {
+                Table.Rows.RemoveAt(Table.CurrentRow.Index);
+                saveSchedule();
+            }
+        }
+
         //clear
         public void clearFields()
         {
@@ -307,19 +355,90 @@ namespace AuditWFA
             dropList_Course.Text = "";
         }
 
-        public void all()
+        //check
+        private bool checkFieldsForScheduleTable()
         {
-            foreach (KeyValuePair<string, Dictionary<string, Dictionary<string, List<string>>>> facult in facultDC)
+            bool state = true;
+            if (dropList_Faculty.Text != "" && dropList_Faculty.Text != " " && dropList_Cath.Text != "" && dropList_Cath.Text != " ")
             {
-                foreach (KeyValuePair<string, Dictionary<string, List<string>>> cathedr in facult.Value)
-                {
-                    foreach (KeyValuePair<string, List<string>> course in cathedr.Value)
-                    {
-
-                    }
-                }
+                return state;
+            }
+            else
+            {
+                return !state;
             }
         }
+
+        //files
+        private void saveSchedule()
+        {
+            dayScheduleInfo_Path = FacultiesDirectory + "\\" + dropList_Faculty.Text + "\\" + dropList_Cath.Text + "\\Schedule\\" + dtp_Teach.Text + ".txt";
+            if (File.Exists(dayScheduleInfo_Path))
+            {
+            }
+            else if (!File.Exists(dayScheduleInfo_Path))
+            {
+                File.Create(dayScheduleInfo_Path);
+            }
+
+            writeScheduleInFile();
+        }
+
+        private void writeScheduleInFile()
+        {
+            List<string> tmp = new List<string>();
+
+            for (int i = 0; i < Table.Rows.Count-1; i++)
+            {
+                for (int j = 0; j < Table.Columns.Count; j++)
+                {
+                    tmp.Add(Table.Rows[i].Cells[j].Value.ToString());
+                }
+                tmp.Add("");
+            }
+            //string[] contents = tmp.Select(i => i.ToString()).ToArray();
+            File.WriteAllLines(dayScheduleInfo_Path, (tmp.Select(i => i.ToString()).ToArray()), Encoding.Unicode);
+            tmp.Clear();
+        }
+
+        private void loadSchedule()
+        {
+            if (checkFieldsForScheduleTable())
+            {
+                Table.Rows.Clear();
+                Table.Refresh();
+                dayScheduleInfo_Path = FacultiesDirectory + "\\" + dropList_Faculty.Text + "\\" + dropList_Cath.Text + "\\Schedule\\" + dtp_Teach.Text + ".txt";
+
+                if (File.Exists(dayScheduleInfo_Path))
+                {
+                    string[] conts = File.ReadAllLines(dayScheduleInfo_Path, Encoding.Unicode);
+                    List<string> list = new List<string>();
+
+                    //column < Table.ColumnCount
+                    for (int i = 0; i < conts.Length; i++)
+                    {
+                        if (conts[i] != "")
+                        {
+                            list.Add(conts[i]);
+                        }
+                        else if(conts[i] == "" && list.Count > 0)
+                        {
+                            addToDC(list[0],list);
+                            Table.Rows.Add(list[0], list[1], list[2], list[3], list[4]);
+                            list.Clear();
+                        }
+                    }
+                }
+                else if (!File.Exists(dayScheduleInfo_Path))
+                {
+                    MessageBox.Show("File is not exits");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Choose Faculty or Cathedra");
+            }
+        }        
     }
 }
 

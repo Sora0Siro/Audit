@@ -59,14 +59,12 @@ namespace AuditWFA
             this.DataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutAuditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DatabaseSearch = new System.Windows.Forms.FolderBrowserDialog();
-            this.dtp_Schedule = new System.Windows.Forms.DateTimePicker();
             this.gB_Schedule = new System.Windows.Forms.GroupBox();
+            this.btt_DeleteSchLine = new System.Windows.Forms.Button();
             this.dtp_Teach = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btt_DeleteSchLine = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.Table)).BeginInit();
             this.Menu.SuspendLayout();
             this.gB_Schedule.SuspendLayout();
@@ -83,7 +81,7 @@ namespace AuditWFA
             this.Column2,
             this.Column3,
             this.numberColumn});
-            this.Table.Location = new System.Drawing.Point(23, 72);
+            this.Table.Location = new System.Drawing.Point(23, 46);
             this.Table.Name = "Table";
             this.Table.RowHeadersVisible = false;
             this.Table.Size = new System.Drawing.Size(496, 341);
@@ -325,26 +323,28 @@ namespace AuditWFA
             this.AboutAuditToolStripMenuItem.Text = "Аудитория";
             this.AboutAuditToolStripMenuItem.Click += new System.EventHandler(this.AboutAuditToolStripMenuItem_Click);
             // 
-            // dtp_Schedule
-            // 
-            this.dtp_Schedule.Location = new System.Drawing.Point(33, 46);
-            this.dtp_Schedule.Name = "dtp_Schedule";
-            this.dtp_Schedule.Size = new System.Drawing.Size(200, 20);
-            this.dtp_Schedule.TabIndex = 36;
-            // 
             // gB_Schedule
             // 
             this.gB_Schedule.BackColor = System.Drawing.Color.Ivory;
-            this.gB_Schedule.Controls.Add(this.comboBox1);
             this.gB_Schedule.Controls.Add(this.btt_DeleteSchLine);
             this.gB_Schedule.Controls.Add(this.Table);
-            this.gB_Schedule.Controls.Add(this.dtp_Schedule);
             this.gB_Schedule.Controls.Add(this.label8);
             this.gB_Schedule.Location = new System.Drawing.Point(0, 373);
             this.gB_Schedule.Name = "gB_Schedule";
-            this.gB_Schedule.Size = new System.Drawing.Size(550, 461);
+            this.gB_Schedule.Size = new System.Drawing.Size(550, 436);
             this.gB_Schedule.TabIndex = 37;
             this.gB_Schedule.TabStop = false;
+            // 
+            // btt_DeleteSchLine
+            // 
+            this.btt_DeleteSchLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btt_DeleteSchLine.Location = new System.Drawing.Point(164, 393);
+            this.btt_DeleteSchLine.Name = "btt_DeleteSchLine";
+            this.btt_DeleteSchLine.Size = new System.Drawing.Size(221, 29);
+            this.btt_DeleteSchLine.TabIndex = 37;
+            this.btt_DeleteSchLine.Text = "Удалить выбранную пару";
+            this.btt_DeleteSchLine.UseVisualStyleBackColor = true;
+            this.btt_DeleteSchLine.Click += new System.EventHandler(this.btt_DeleteSchLine_Click);
             // 
             // dtp_Teach
             // 
@@ -401,32 +401,13 @@ namespace AuditWFA
             this.groupBox2.TabIndex = 41;
             this.groupBox2.TabStop = false;
             // 
-            // btt_DeleteSchLine
-            // 
-            this.btt_DeleteSchLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btt_DeleteSchLine.Location = new System.Drawing.Point(167, 419);
-            this.btt_DeleteSchLine.Name = "btt_DeleteSchLine";
-            this.btt_DeleteSchLine.Size = new System.Drawing.Size(221, 29);
-            this.btt_DeleteSchLine.TabIndex = 37;
-            this.btt_DeleteSchLine.Text = "Удалить выбранную пару";
-            this.btt_DeleteSchLine.UseVisualStyleBackColor = true;
-            this.btt_DeleteSchLine.Click += new System.EventHandler(this.btt_DeleteSchLine_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(343, 45);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 38;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(550, 835);
+            this.ClientSize = new System.Drawing.Size(550, 800);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gB_Schedule);
@@ -436,6 +417,7 @@ namespace AuditWFA
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Audit";
+            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.Table)).EndInit();
             this.Menu.ResumeLayout(false);
             this.Menu.PerformLayout();
@@ -478,13 +460,11 @@ namespace AuditWFA
         private System.Windows.Forms.ToolStripMenuItem DataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AboutAuditToolStripMenuItem;
         private System.Windows.Forms.FolderBrowserDialog DatabaseSearch;
-        private System.Windows.Forms.DateTimePicker dtp_Schedule;
         private System.Windows.Forms.GroupBox gB_Schedule;
         private System.Windows.Forms.DateTimePicker dtp_Teach;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btt_DeleteSchLine;
-        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

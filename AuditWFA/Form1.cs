@@ -33,7 +33,9 @@ namespace AuditWFA
         {
             InitializeComponent();
 
-            DataToolStripMenuItem.PerformClick();
+            FullDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\DataBase";
+            AuditoriesPath = FullDirectory + "\\Auditories.txt";
+            FacultiesDirectory = FullDirectory + "\\Faculties";
 
             dc = new Dictionary<string, List<List<string>>>();
             coursesDC = new Dictionary<string, List<string>>();
@@ -231,14 +233,20 @@ namespace AuditWFA
                     }
                 }
 
-                foreach (KeyValuePair<string, List<string>> dc in auditoriesDC)
-                {
-                    textField_Aud.Items.Add(dc.Key);
-                }
+                setDropListAuditories();
             }
             catch(FileNotFoundException e)
             {
                 MessageBox.Show("File was not found");
+            }
+        }
+
+        private void setDropListAuditories()
+        {
+            textField_Aud.Items.Clear();
+            foreach (KeyValuePair<string, List<string>> dc in auditoriesDC)
+            {
+                textField_Aud.Items.Add(dc.Key);
             }
         }
 
@@ -302,7 +310,14 @@ namespace AuditWFA
             string totalPath = "";
             totalPath = FacultiesDirectory + "\\" + dropList_Faculty.Text + "\\" + dropList_Cath.Text; //teacher folder, course .txt
             var directories = Directory.GetDirectories(totalPath);
-            setTeacherInfo(directories[1]);
+            foreach(string s in directories)
+            {
+                if(s.Contains("Teach"))
+                {
+                    setTeacherInfo(s);
+                    break;
+                }
+            }
             setDropList_Course();
             loadSchedule();
             //Table.column
@@ -322,8 +337,15 @@ namespace AuditWFA
 
         private void AboutAuditToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InfoForm inf = new InfoForm(auditoriesDC,AuditoriesPath);
+            InfoForm inf = new InfoForm(auditoriesDC, AuditoriesPath);
+            inf.FormClosed += Inf_FormClosed;
             inf.ShowDialog();
+        }
+        private void Inf_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //throw new NotImplementedException();
+            //setAuditoriesFromFile();
+            setDropListAuditories();
         }
 
         private void dtp_Teach_ValueChanged(object sender, EventArgs e)
@@ -372,15 +394,6 @@ namespace AuditWFA
         //files
         private void saveSchedule()
         {
-            dayScheduleInfo_Path = FacultiesDirectory + "\\" + dropList_Faculty.Text + "\\" + dropList_Cath.Text + "\\Schedule\\" + dtp_Teach.Text + ".txt";
-            if (File.Exists(dayScheduleInfo_Path))
-            {
-            }
-            else if (!File.Exists(dayScheduleInfo_Path))
-            {
-                File.Create(dayScheduleInfo_Path);
-            }
-
             writeScheduleInFile();
         }
 
@@ -396,13 +409,14 @@ namespace AuditWFA
                 }
                 tmp.Add("");
             }
-            //string[] contents = tmp.Select(i => i.ToString()).ToArray();
-            File.WriteAllLines(dayScheduleInfo_Path, (tmp.Select(i => i.ToString()).ToArray()), Encoding.Unicode);
+            string[] contents = tmp.Select(i => i.ToString()).ToArray();
+            File.WriteAllLines(dayScheduleInfo_Path, contents, Encoding.Unicode);
             tmp.Clear();
         }
 
         private void loadSchedule()
         {
+            dc.Clear();
             if (checkFieldsForScheduleTable())
             {
                 Table.Rows.Clear();
@@ -429,14 +443,23 @@ namespace AuditWFA
                         }
                     }
                 }
-                else if (!File.Exists(dayScheduleInfo_Path))
+                else
                 {
-                    MessageBox.Show("File is not exits");
+                    MessageBox.Show("Расписание на данный день отсутствует");
+                    //File.Create(dayScheduleInfo_Path);
                 }
             }
             else
             {
-                MessageBox.Show("Choose Faculty or Cathedra");
+                
+                if(dropList_Faculty.Text == " " || dropList_Faculty.Text == null)
+                {
+                    MessageBox.Show("Выберите факультет");
+                }
+                else if(dropList_Cath.Text == " " || dropList_Cath.Text == null)
+                {
+                    MessageBox.Show("Выберите кафедру");
+                }
             }
         }        
     }

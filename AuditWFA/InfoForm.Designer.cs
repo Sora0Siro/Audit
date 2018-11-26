@@ -47,6 +47,9 @@
             this.btt_Save = new System.Windows.Forms.Button();
             this.btt_Clear = new System.Windows.Forms.Button();
             this.gB_Adding = new System.Windows.Forms.GroupBox();
+            this.chck_Security = new System.Windows.Forms.CheckBox();
+            this.chck_Condition = new System.Windows.Forms.CheckBox();
+            this.chck_Projector = new System.Windows.Forms.CheckBox();
             this.txt_AuditoryAdd = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_PCsAdd = new System.Windows.Forms.TextBox();
@@ -58,9 +61,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_PlacesAdd = new System.Windows.Forms.TextBox();
-            this.chck_Projector = new System.Windows.Forms.CheckBox();
-            this.chck_Condition = new System.Windows.Forms.CheckBox();
-            this.chck_Security = new System.Windows.Forms.CheckBox();
+            this.btt_HidePart = new System.Windows.Forms.Button();
             this.gB_Editing.SuspendLayout();
             this.gB_Adding.SuspendLayout();
             this.SuspendLayout();
@@ -206,7 +207,7 @@
             this.btt_AuditoryNew.Name = "btt_AuditoryNew";
             this.btt_AuditoryNew.Size = new System.Drawing.Size(111, 23);
             this.btt_AuditoryNew.TabIndex = 24;
-            this.btt_AuditoryNew.Text = "New Auditory";
+            this.btt_AuditoryNew.Text = "Новая Аудитория";
             this.btt_AuditoryNew.UseVisualStyleBackColor = true;
             this.btt_AuditoryNew.Visible = false;
             this.btt_AuditoryNew.Click += new System.EventHandler(this.btt_Add_Click);
@@ -217,7 +218,7 @@
             this.btt_Delete.Name = "btt_Delete";
             this.btt_Delete.Size = new System.Drawing.Size(75, 23);
             this.btt_Delete.TabIndex = 25;
-            this.btt_Delete.Text = "Delete";
+            this.btt_Delete.Text = "Удалить";
             this.btt_Delete.UseVisualStyleBackColor = true;
             this.btt_Delete.Visible = false;
             this.btt_Delete.Click += new System.EventHandler(this.btt_Delete_Click);
@@ -228,7 +229,7 @@
             this.btt_Edit.Name = "btt_Edit";
             this.btt_Edit.Size = new System.Drawing.Size(75, 23);
             this.btt_Edit.TabIndex = 19;
-            this.btt_Edit.Text = "Edit";
+            this.btt_Edit.Text = "Изменить";
             this.btt_Edit.UseVisualStyleBackColor = true;
             this.btt_Edit.Click += new System.EventHandler(this.btt_Edit_Click);
             // 
@@ -238,7 +239,7 @@
             this.btt_Save.Name = "btt_Save";
             this.btt_Save.Size = new System.Drawing.Size(75, 23);
             this.btt_Save.TabIndex = 20;
-            this.btt_Save.Text = "Save";
+            this.btt_Save.Text = "Сохранить";
             this.btt_Save.UseVisualStyleBackColor = true;
             this.btt_Save.Visible = false;
             this.btt_Save.Click += new System.EventHandler(this.btt_OK_Click);
@@ -249,13 +250,14 @@
             this.btt_Clear.Name = "btt_Clear";
             this.btt_Clear.Size = new System.Drawing.Size(75, 23);
             this.btt_Clear.TabIndex = 22;
-            this.btt_Clear.Text = "Clear";
+            this.btt_Clear.Text = "Очистить";
             this.btt_Clear.UseVisualStyleBackColor = true;
             this.btt_Clear.Visible = false;
             this.btt_Clear.Click += new System.EventHandler(this.btt_Clear_Click);
             // 
             // gB_Adding
             // 
+            this.gB_Adding.Controls.Add(this.btt_HidePart);
             this.gB_Adding.Controls.Add(this.chck_Security);
             this.gB_Adding.Controls.Add(this.chck_Condition);
             this.gB_Adding.Controls.Add(this.chck_Projector);
@@ -275,6 +277,34 @@
             this.gB_Adding.Size = new System.Drawing.Size(328, 384);
             this.gB_Adding.TabIndex = 18;
             this.gB_Adding.TabStop = false;
+            // 
+            // chck_Security
+            // 
+            this.chck_Security.AutoSize = true;
+            this.chck_Security.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.chck_Security.Location = new System.Drawing.Point(262, 224);
+            this.chck_Security.Name = "chck_Security";
+            this.chck_Security.Size = new System.Drawing.Size(15, 14);
+            this.chck_Security.TabIndex = 26;
+            this.chck_Security.UseVisualStyleBackColor = true;
+            // 
+            // chck_Condition
+            // 
+            this.chck_Condition.AutoSize = true;
+            this.chck_Condition.Location = new System.Drawing.Point(262, 191);
+            this.chck_Condition.Name = "chck_Condition";
+            this.chck_Condition.Size = new System.Drawing.Size(15, 14);
+            this.chck_Condition.TabIndex = 25;
+            this.chck_Condition.UseVisualStyleBackColor = true;
+            // 
+            // chck_Projector
+            // 
+            this.chck_Projector.AutoSize = true;
+            this.chck_Projector.Location = new System.Drawing.Point(262, 154);
+            this.chck_Projector.Name = "chck_Projector";
+            this.chck_Projector.Size = new System.Drawing.Size(15, 14);
+            this.chck_Projector.TabIndex = 24;
+            this.chck_Projector.UseVisualStyleBackColor = true;
             // 
             // txt_AuditoryAdd
             // 
@@ -324,22 +354,22 @@
             // 
             // btt_Add
             // 
-            this.btt_Add.Location = new System.Drawing.Point(97, 308);
+            this.btt_Add.Location = new System.Drawing.Point(37, 308);
             this.btt_Add.Name = "btt_Add";
             this.btt_Add.Size = new System.Drawing.Size(75, 23);
             this.btt_Add.TabIndex = 21;
-            this.btt_Add.Text = "Add";
+            this.btt_Add.Text = "Добавить";
             this.btt_Add.UseVisualStyleBackColor = true;
             this.btt_Add.Visible = false;
             this.btt_Add.Click += new System.EventHandler(this.btt_Add_Click_1);
             // 
             // btt_ClearAdd
             // 
-            this.btt_ClearAdd.Location = new System.Drawing.Point(189, 308);
+            this.btt_ClearAdd.Location = new System.Drawing.Point(129, 308);
             this.btt_ClearAdd.Name = "btt_ClearAdd";
             this.btt_ClearAdd.Size = new System.Drawing.Size(75, 23);
             this.btt_ClearAdd.TabIndex = 23;
-            this.btt_ClearAdd.Text = "Clear";
+            this.btt_ClearAdd.Text = "Очистить";
             this.btt_ClearAdd.UseVisualStyleBackColor = true;
             this.btt_ClearAdd.Visible = false;
             this.btt_ClearAdd.Click += new System.EventHandler(this.btt_ClearAdd_Click);
@@ -382,33 +412,15 @@
             this.txt_PlacesAdd.Size = new System.Drawing.Size(86, 26);
             this.txt_PlacesAdd.TabIndex = 7;
             // 
-            // chck_Projector
+            // btt_HidePart
             // 
-            this.chck_Projector.AutoSize = true;
-            this.chck_Projector.Location = new System.Drawing.Point(262, 154);
-            this.chck_Projector.Name = "chck_Projector";
-            this.chck_Projector.Size = new System.Drawing.Size(15, 14);
-            this.chck_Projector.TabIndex = 24;
-            this.chck_Projector.UseVisualStyleBackColor = true;
-            // 
-            // chck_Condition
-            // 
-            this.chck_Condition.AutoSize = true;
-            this.chck_Condition.Location = new System.Drawing.Point(262, 191);
-            this.chck_Condition.Name = "chck_Condition";
-            this.chck_Condition.Size = new System.Drawing.Size(15, 14);
-            this.chck_Condition.TabIndex = 25;
-            this.chck_Condition.UseVisualStyleBackColor = true;
-            // 
-            // chck_Security
-            // 
-            this.chck_Security.AutoSize = true;
-            this.chck_Security.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.chck_Security.Location = new System.Drawing.Point(262, 224);
-            this.chck_Security.Name = "chck_Security";
-            this.chck_Security.Size = new System.Drawing.Size(15, 14);
-            this.chck_Security.TabIndex = 26;
-            this.chck_Security.UseVisualStyleBackColor = true;
+            this.btt_HidePart.Location = new System.Drawing.Point(216, 308);
+            this.btt_HidePart.Name = "btt_HidePart";
+            this.btt_HidePart.Size = new System.Drawing.Size(75, 23);
+            this.btt_HidePart.TabIndex = 27;
+            this.btt_HidePart.Text = "Скрыть";
+            this.btt_HidePart.UseVisualStyleBackColor = true;
+            this.btt_HidePart.Click += new System.EventHandler(this.btt_HidePart_Click);
             // 
             // InfoForm
             // 
@@ -419,7 +431,10 @@
             this.Controls.Add(this.gB_Editing);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "InfoForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InfoForm";
+            this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.InfoForm_FormClosed);
             this.gB_Editing.ResumeLayout(false);
             this.gB_Editing.PerformLayout();
             this.gB_Adding.ResumeLayout(false);
@@ -463,5 +478,6 @@
         private System.Windows.Forms.CheckBox chck_Security;
         private System.Windows.Forms.CheckBox chck_Condition;
         private System.Windows.Forms.CheckBox chck_Projector;
+        private System.Windows.Forms.Button btt_HidePart;
     }
 }

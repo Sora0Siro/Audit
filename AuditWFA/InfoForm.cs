@@ -28,6 +28,7 @@ namespace AuditWFA
             setAuditories();
             hideButtons();
             showAddButtons();
+            setDefaultRedactButtonPosition();
         }
 
         //events
@@ -49,10 +50,12 @@ namespace AuditWFA
             if (buttonsEnabled)
             {
                 hideButtons();
+                setDefaultRedactButtonPosition();
             }
             else if (!buttonsEnabled)
             {
                 showButtons();
+                setExtendRedactButtonPosition();
             }
         }
 
@@ -115,10 +118,6 @@ namespace AuditWFA
                     setAuditories();
                     saveEditedAuditories();
                 }
-            }
-            else if (!checkAddingFields())
-            {
-                MessageBox.Show("Некоторые поля незаполнены");
             }
         }
 
@@ -233,14 +232,23 @@ namespace AuditWFA
 
         private bool checkAddingFields()
         {
-            bool state = true;
-            if (txt_AuditoryAdd.Text != "" && txt_AuditoryAdd.Text != " " && txt_PlacesAdd.Text != "" && txt_PlacesAdd.Text != " " && txt_PCsAdd.Text != "" && txt_PCsAdd.Text != " ")
+            if(txt_AuditoryAdd.Text.Contains("ОЦ") || txt_AuditoryAdd.Text.Contains("оц") || txt_AuditoryAdd.Text.Contains("ауд") || txt_AuditoryAdd.Text.Contains("АУД") || txt_AuditoryAdd.Text.Contains("№"))
             {
-                return state;
+                bool state = true;
+                if (txt_AuditoryAdd.Text != "" && txt_AuditoryAdd.Text != " " && txt_PlacesAdd.Text != "" && txt_PlacesAdd.Text != " " && txt_PCsAdd.Text != "" && txt_PCsAdd.Text != " ")
+                {
+                    return state;
+                }
+                else
+                {
+                    MessageBox.Show("Некоторые поля незаполнены");
+                    return !state;
+                }
             }
             else
             {
-                return !state;
+                MessageBox.Show("Неподходящее название для аудитории");
+                return false;
             }
         }
 
@@ -272,6 +280,16 @@ namespace AuditWFA
             }
         }
 
+        private void setDefaultRedactButtonPosition()
+        {
+            btt_Edit.Location = new Point(85, 308);
+        }
+
+        private void setExtendRedactButtonPosition()
+        {
+            btt_Edit.Location = new Point(85, 264);
+        }
+
         //clear
         private void clearAddingFields()
         {
@@ -300,6 +318,17 @@ namespace AuditWFA
         private void clearDropListAuditories()
         {
             dropList_Auditory.Items.Clear();
+        }
+
+        private void InfoForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
+
+        private void btt_HidePart_Click(object sender, EventArgs e)
+        {
+            setDefaultWindowSize();
+            gB_Adding.Visible = false;
         }
     }
 }

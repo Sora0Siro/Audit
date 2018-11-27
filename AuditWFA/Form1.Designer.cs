@@ -141,7 +141,7 @@ namespace AuditWFA
             this.dropList_Faculty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dropList_Faculty.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dropList_Faculty.FormattingEnabled = true;
-            this.dropList_Faculty.Location = new System.Drawing.Point(239, 22);
+            this.dropList_Faculty.Location = new System.Drawing.Point(245, 22);
             this.dropList_Faculty.Name = "dropList_Faculty";
             this.dropList_Faculty.Size = new System.Drawing.Size(174, 26);
             this.dropList_Faculty.TabIndex = 7;
@@ -151,7 +151,7 @@ namespace AuditWFA
             // 
             this.facultyLabel.AutoSize = true;
             this.facultyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.facultyLabel.Location = new System.Drawing.Point(139, 24);
+            this.facultyLabel.Location = new System.Drawing.Point(145, 24);
             this.facultyLabel.Name = "facultyLabel";
             this.facultyLabel.Size = new System.Drawing.Size(94, 20);
             this.facultyLabel.TabIndex = 9;
@@ -161,7 +161,7 @@ namespace AuditWFA
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(65, 68);
+            this.label2.Location = new System.Drawing.Point(85, 72);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(132, 20);
             this.label2.TabIndex = 16;
@@ -171,7 +171,7 @@ namespace AuditWFA
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(96, 121);
+            this.label3.Location = new System.Drawing.Point(116, 125);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 20);
             this.label3.TabIndex = 17;
@@ -181,7 +181,7 @@ namespace AuditWFA
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(267, 127);
+            this.label4.Location = new System.Drawing.Point(287, 131);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 20);
             this.label4.TabIndex = 18;
@@ -191,7 +191,7 @@ namespace AuditWFA
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(372, 68);
+            this.label5.Location = new System.Drawing.Point(392, 72);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(92, 20);
             this.label5.TabIndex = 19;
@@ -201,7 +201,7 @@ namespace AuditWFA
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(380, 121);
+            this.label6.Location = new System.Drawing.Point(400, 125);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(66, 20);
             this.label6.TabIndex = 20;
@@ -211,7 +211,7 @@ namespace AuditWFA
             // 
             this.textField_Teacher.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.textField_Teacher.FormattingEnabled = true;
-            this.textField_Teacher.Location = new System.Drawing.Point(34, 97);
+            this.textField_Teacher.Location = new System.Drawing.Point(54, 101);
             this.textField_Teacher.Name = "textField_Teacher";
             this.textField_Teacher.Size = new System.Drawing.Size(199, 21);
             this.textField_Teacher.TabIndex = 21;
@@ -221,7 +221,7 @@ namespace AuditWFA
             // 
             this.textField_Subject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.textField_Subject.FormattingEnabled = true;
-            this.textField_Subject.Location = new System.Drawing.Point(34, 150);
+            this.textField_Subject.Location = new System.Drawing.Point(54, 154);
             this.textField_Subject.Name = "textField_Subject";
             this.textField_Subject.Size = new System.Drawing.Size(199, 21);
             this.textField_Subject.TabIndex = 22;
@@ -230,7 +230,7 @@ namespace AuditWFA
             // 
             this.textField_Group.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.textField_Group.FormattingEnabled = true;
-            this.textField_Group.Location = new System.Drawing.Point(239, 150);
+            this.textField_Group.Location = new System.Drawing.Point(259, 154);
             this.textField_Group.Name = "textField_Group";
             this.textField_Group.Size = new System.Drawing.Size(119, 21);
             this.textField_Group.TabIndex = 23;
@@ -239,7 +239,7 @@ namespace AuditWFA
             // 
             this.textField_Aud.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.textField_Aud.FormattingEnabled = true;
-            this.textField_Aud.Location = new System.Drawing.Point(364, 97);
+            this.textField_Aud.Location = new System.Drawing.Point(384, 101);
             this.textField_Aud.Name = "textField_Aud";
             this.textField_Aud.Size = new System.Drawing.Size(119, 21);
             this.textField_Aud.TabIndex = 24;
@@ -255,14 +255,14 @@ namespace AuditWFA
             "4",
             "5",
             "6"});
-            this.textField_Number.Location = new System.Drawing.Point(364, 150);
+            this.textField_Number.Location = new System.Drawing.Point(384, 154);
             this.textField_Number.Name = "textField_Number";
             this.textField_Number.Size = new System.Drawing.Size(119, 21);
             this.textField_Number.TabIndex = 25;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(132, 193);
+            this.button1.Location = new System.Drawing.Point(152, 197);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(299, 23);
             this.button1.TabIndex = 27;
@@ -284,7 +284,7 @@ namespace AuditWFA
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(142, 56);
+            this.label9.Location = new System.Drawing.Point(148, 56);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(81, 20);
             this.label9.TabIndex = 32;
@@ -296,7 +296,7 @@ namespace AuditWFA
             this.dropList_Cath.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dropList_Cath.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dropList_Cath.FormattingEnabled = true;
-            this.dropList_Cath.Location = new System.Drawing.Point(239, 54);
+            this.dropList_Cath.Location = new System.Drawing.Point(245, 54);
             this.dropList_Cath.Name = "dropList_Cath";
             this.dropList_Cath.Size = new System.Drawing.Size(174, 26);
             this.dropList_Cath.TabIndex = 31;
@@ -306,7 +306,7 @@ namespace AuditWFA
             // 
             this.courseLabel.AutoSize = true;
             this.courseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.courseLabel.Location = new System.Drawing.Point(272, 68);
+            this.courseLabel.Location = new System.Drawing.Point(292, 72);
             this.courseLabel.Name = "courseLabel";
             this.courseLabel.Size = new System.Drawing.Size(43, 20);
             this.courseLabel.TabIndex = 34;
@@ -318,7 +318,7 @@ namespace AuditWFA
             this.dropList_Course.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dropList_Course.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dropList_Course.FormattingEnabled = true;
-            this.dropList_Course.Location = new System.Drawing.Point(239, 97);
+            this.dropList_Course.Location = new System.Drawing.Point(259, 101);
             this.dropList_Course.Name = "dropList_Course";
             this.dropList_Course.Size = new System.Drawing.Size(119, 21);
             this.dropList_Course.TabIndex = 33;
@@ -452,7 +452,7 @@ namespace AuditWFA
             this.gB_ChZnType.Controls.Add(this.chck_Zn);
             this.gB_ChZnType.Controls.Add(this.dropList_Schedule);
             this.gB_ChZnType.Controls.Add(this.chck_Ch);
-            this.gB_ChZnType.Location = new System.Drawing.Point(74, 15);
+            this.gB_ChZnType.Location = new System.Drawing.Point(94, 19);
             this.gB_ChZnType.Name = "gB_ChZnType";
             this.gB_ChZnType.Size = new System.Drawing.Size(383, 50);
             this.gB_ChZnType.TabIndex = 41;
@@ -514,7 +514,7 @@ namespace AuditWFA
             // 
             this.gB_CalendarType.Controls.Add(this.label10);
             this.gB_CalendarType.Controls.Add(this.dtp_Teach);
-            this.gB_CalendarType.Location = new System.Drawing.Point(74, 13);
+            this.gB_CalendarType.Location = new System.Drawing.Point(94, 17);
             this.gB_CalendarType.Name = "gB_CalendarType";
             this.gB_CalendarType.Size = new System.Drawing.Size(372, 52);
             this.gB_CalendarType.TabIndex = 40;

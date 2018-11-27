@@ -29,6 +29,9 @@ namespace AuditWFA
             hideButtons();
             showAddButtons();
             setDefaultRedactButtonPosition();
+
+            ToolTip t = new ToolTip();
+            t.SetToolTip(txt_AuditoryAdd, "ОЦ, лаб, ауд");
         }
 
         //events
@@ -75,11 +78,11 @@ namespace AuditWFA
 
                 saveEditedAuditories();
 
-                hideButtons();
+                MessageBox.Show("Данные аудитории были сохранены");
             }
             else
             {
-                MessageBox.Show("ADD INFO");
+                MessageBox.Show("Некоторые поля незаполнены");
             }
         }
 
@@ -341,7 +344,17 @@ namespace AuditWFA
         private void txt_Places_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
+            {
                 e.Handled = true;
+            }
+        }
+
+        private void txt_Secure_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < 'А' || e.KeyChar > 'я') && e.KeyChar != '\b' && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
         }
     }
 }

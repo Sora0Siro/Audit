@@ -143,6 +143,7 @@
             this.txt_Projector.Name = "txt_Projector";
             this.txt_Projector.Size = new System.Drawing.Size(177, 26);
             this.txt_Projector.TabIndex = 8;
+            this.txt_Projector.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Secure_KeyPress);
             // 
             // txt_Condition
             // 
@@ -151,6 +152,7 @@
             this.txt_Condition.Name = "txt_Condition";
             this.txt_Condition.Size = new System.Drawing.Size(177, 26);
             this.txt_Condition.TabIndex = 9;
+            this.txt_Condition.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Secure_KeyPress);
             // 
             // txt_Secure
             // 
@@ -159,6 +161,7 @@
             this.txt_Secure.Name = "txt_Secure";
             this.txt_Secure.Size = new System.Drawing.Size(177, 26);
             this.txt_Secure.TabIndex = 10;
+            this.txt_Secure.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Secure_KeyPress);
             // 
             // txt_PCs
             // 

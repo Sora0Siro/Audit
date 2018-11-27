@@ -59,7 +59,7 @@ namespace AuditWFA
             {
                 string s = courses[i];
 
-                if (s.Contains("course") || s.Contains("Course") || s.Contains("Masters"))
+                if (s.Contains("курс") || s.Contains("Курс") || s.Contains("Магистры"))
                 {
                     tmpKey = s;
                 }

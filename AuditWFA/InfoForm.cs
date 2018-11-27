@@ -49,11 +49,13 @@ namespace AuditWFA
         {
             if (buttonsEnabled)
             {
+                btt_Edit.Text = "Редактировать";
                 hideButtons();
                 setDefaultRedactButtonPosition();
             }
             else if (!buttonsEnabled)
             {
+                btt_Edit.Text = "Завершить";
                 showButtons();
                 setExtendRedactButtonPosition();
             }
@@ -245,6 +247,11 @@ namespace AuditWFA
                     return !state;
                 }
             }
+            else if(txt_AuditoryAdd.Text == null || txt_AuditoryAdd.Text ==" ")
+            {
+                MessageBox.Show("Введите название аудитории");
+                return false;
+            }
             else
             {
                 MessageBox.Show("Неподходящее название для аудитории");
@@ -282,12 +289,12 @@ namespace AuditWFA
 
         private void setDefaultRedactButtonPosition()
         {
-            btt_Edit.Location = new Point(85, 308);
+            btt_Edit.Location = new Point(64, 308);
         }
 
         private void setExtendRedactButtonPosition()
         {
-            btt_Edit.Location = new Point(85, 264);
+            btt_Edit.Location = new Point(64, 268);
         }
 
         //clear
@@ -329,6 +336,12 @@ namespace AuditWFA
         {
             setDefaultWindowSize();
             gB_Adding.Visible = false;
+        }
+
+        private void txt_Places_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
+                e.Handled = true;
         }
     }
 }

@@ -65,11 +65,23 @@ namespace AuditWFA
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dropList_Schedule = new System.Windows.Forms.ComboBox();
+            this.chck_Ch = new System.Windows.Forms.RadioButton();
+            this.chck_Zn = new System.Windows.Forms.RadioButton();
+            this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.выборДатыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.календарьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.числЗнамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gB_CalendarType = new System.Windows.Forms.GroupBox();
+            this.gB_ChZnType = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Table)).BeginInit();
             this.Menu.SuspendLayout();
             this.gB_Schedule.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.gB_CalendarType.SuspendLayout();
+            this.gB_ChZnType.SuspendLayout();
             this.SuspendLayout();
             // 
             // Table
@@ -81,8 +93,9 @@ namespace AuditWFA
             this.Column2,
             this.Column3,
             this.numberColumn});
-            this.Table.Location = new System.Drawing.Point(23, 46);
+            this.Table.Location = new System.Drawing.Point(34, 46);
             this.Table.Name = "Table";
+            this.Table.ReadOnly = true;
             this.Table.RowHeadersVisible = false;
             this.Table.Size = new System.Drawing.Size(496, 341);
             this.Table.TabIndex = 3;
@@ -91,30 +104,35 @@ namespace AuditWFA
             // 
             this.Column1.HeaderText = "Teacher";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Subject";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             this.Column4.Width = 160;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Group";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Auditorium";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // numberColumn
             // 
             this.numberColumn.HeaderText = "№";
             this.numberColumn.Name = "numberColumn";
+            this.numberColumn.ReadOnly = true;
             this.numberColumn.Width = 30;
             // 
             // dropList_Faculty
@@ -122,7 +140,7 @@ namespace AuditWFA
             this.dropList_Faculty.BackColor = System.Drawing.SystemColors.Window;
             this.dropList_Faculty.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dropList_Faculty.FormattingEnabled = true;
-            this.dropList_Faculty.Location = new System.Drawing.Point(116, 24);
+            this.dropList_Faculty.Location = new System.Drawing.Point(239, 22);
             this.dropList_Faculty.Name = "dropList_Faculty";
             this.dropList_Faculty.Size = new System.Drawing.Size(174, 26);
             this.dropList_Faculty.TabIndex = 7;
@@ -132,7 +150,7 @@ namespace AuditWFA
             // 
             this.facultyLabel.AutoSize = true;
             this.facultyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.facultyLabel.Location = new System.Drawing.Point(16, 26);
+            this.facultyLabel.Location = new System.Drawing.Point(139, 24);
             this.facultyLabel.Name = "facultyLabel";
             this.facultyLabel.Size = new System.Drawing.Size(94, 20);
             this.facultyLabel.TabIndex = 9;
@@ -142,7 +160,7 @@ namespace AuditWFA
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(65, 58);
+            this.label2.Location = new System.Drawing.Point(65, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(132, 20);
             this.label2.TabIndex = 16;
@@ -152,7 +170,7 @@ namespace AuditWFA
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(96, 111);
+            this.label3.Location = new System.Drawing.Point(96, 121);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 20);
             this.label3.TabIndex = 17;
@@ -162,7 +180,7 @@ namespace AuditWFA
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(267, 117);
+            this.label4.Location = new System.Drawing.Point(267, 127);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 20);
             this.label4.TabIndex = 18;
@@ -172,7 +190,7 @@ namespace AuditWFA
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(372, 58);
+            this.label5.Location = new System.Drawing.Point(372, 68);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(92, 20);
             this.label5.TabIndex = 19;
@@ -182,7 +200,7 @@ namespace AuditWFA
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(380, 111);
+            this.label6.Location = new System.Drawing.Point(380, 121);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(66, 20);
             this.label6.TabIndex = 20;
@@ -191,7 +209,7 @@ namespace AuditWFA
             // textField_Teacher
             // 
             this.textField_Teacher.FormattingEnabled = true;
-            this.textField_Teacher.Location = new System.Drawing.Point(34, 87);
+            this.textField_Teacher.Location = new System.Drawing.Point(34, 97);
             this.textField_Teacher.Name = "textField_Teacher";
             this.textField_Teacher.Size = new System.Drawing.Size(199, 21);
             this.textField_Teacher.TabIndex = 21;
@@ -200,7 +218,7 @@ namespace AuditWFA
             // textField_Subject
             // 
             this.textField_Subject.FormattingEnabled = true;
-            this.textField_Subject.Location = new System.Drawing.Point(34, 140);
+            this.textField_Subject.Location = new System.Drawing.Point(34, 150);
             this.textField_Subject.Name = "textField_Subject";
             this.textField_Subject.Size = new System.Drawing.Size(199, 21);
             this.textField_Subject.TabIndex = 22;
@@ -208,7 +226,7 @@ namespace AuditWFA
             // textField_Group
             // 
             this.textField_Group.FormattingEnabled = true;
-            this.textField_Group.Location = new System.Drawing.Point(239, 140);
+            this.textField_Group.Location = new System.Drawing.Point(239, 150);
             this.textField_Group.Name = "textField_Group";
             this.textField_Group.Size = new System.Drawing.Size(119, 21);
             this.textField_Group.TabIndex = 23;
@@ -216,7 +234,7 @@ namespace AuditWFA
             // textField_Aud
             // 
             this.textField_Aud.FormattingEnabled = true;
-            this.textField_Aud.Location = new System.Drawing.Point(364, 87);
+            this.textField_Aud.Location = new System.Drawing.Point(364, 97);
             this.textField_Aud.Name = "textField_Aud";
             this.textField_Aud.Size = new System.Drawing.Size(119, 21);
             this.textField_Aud.TabIndex = 24;
@@ -231,14 +249,14 @@ namespace AuditWFA
             "4",
             "5",
             "6"});
-            this.textField_Number.Location = new System.Drawing.Point(364, 140);
+            this.textField_Number.Location = new System.Drawing.Point(364, 150);
             this.textField_Number.Name = "textField_Number";
             this.textField_Number.Size = new System.Drawing.Size(119, 21);
             this.textField_Number.TabIndex = 25;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(118, 188);
+            this.button1.Location = new System.Drawing.Point(132, 193);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(299, 23);
             this.button1.TabIndex = 27;
@@ -260,7 +278,7 @@ namespace AuditWFA
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(19, 58);
+            this.label9.Location = new System.Drawing.Point(142, 56);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(81, 20);
             this.label9.TabIndex = 32;
@@ -271,7 +289,7 @@ namespace AuditWFA
             this.dropList_Cath.BackColor = System.Drawing.SystemColors.Window;
             this.dropList_Cath.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dropList_Cath.FormattingEnabled = true;
-            this.dropList_Cath.Location = new System.Drawing.Point(116, 56);
+            this.dropList_Cath.Location = new System.Drawing.Point(239, 54);
             this.dropList_Cath.Name = "dropList_Cath";
             this.dropList_Cath.Size = new System.Drawing.Size(174, 26);
             this.dropList_Cath.TabIndex = 31;
@@ -281,7 +299,7 @@ namespace AuditWFA
             // 
             this.courseLabel.AutoSize = true;
             this.courseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.courseLabel.Location = new System.Drawing.Point(272, 58);
+            this.courseLabel.Location = new System.Drawing.Point(272, 68);
             this.courseLabel.Name = "courseLabel";
             this.courseLabel.Size = new System.Drawing.Size(43, 20);
             this.courseLabel.TabIndex = 34;
@@ -292,7 +310,7 @@ namespace AuditWFA
             this.dropList_Course.BackColor = System.Drawing.SystemColors.Window;
             this.dropList_Course.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dropList_Course.FormattingEnabled = true;
-            this.dropList_Course.Location = new System.Drawing.Point(239, 87);
+            this.dropList_Course.Location = new System.Drawing.Point(239, 97);
             this.dropList_Course.Name = "dropList_Course";
             this.dropList_Course.Size = new System.Drawing.Size(119, 21);
             this.dropList_Course.TabIndex = 33;
@@ -302,7 +320,8 @@ namespace AuditWFA
             // 
             this.Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.DataToolStripMenuItem,
-            this.AboutAuditToolStripMenuItem});
+            this.AboutAuditToolStripMenuItem,
+            this.настройкиToolStripMenuItem});
             this.Menu.Location = new System.Drawing.Point(0, 0);
             this.Menu.Name = "Menu";
             this.Menu.Size = new System.Drawing.Size(550, 24);
@@ -331,7 +350,7 @@ namespace AuditWFA
             this.gB_Schedule.Controls.Add(this.label8);
             this.gB_Schedule.Location = new System.Drawing.Point(0, 373);
             this.gB_Schedule.Name = "gB_Schedule";
-            this.gB_Schedule.Size = new System.Drawing.Size(550, 436);
+            this.gB_Schedule.Size = new System.Drawing.Size(550, 429);
             this.gB_Schedule.TabIndex = 37;
             this.gB_Schedule.TabStop = false;
             // 
@@ -348,7 +367,7 @@ namespace AuditWFA
             // 
             // dtp_Teach
             // 
-            this.dtp_Teach.Location = new System.Drawing.Point(249, 26);
+            this.dtp_Teach.Location = new System.Drawing.Point(157, 16);
             this.dtp_Teach.Name = "dtp_Teach";
             this.dtp_Teach.Size = new System.Drawing.Size(200, 20);
             this.dtp_Teach.TabIndex = 38;
@@ -358,7 +377,7 @@ namespace AuditWFA
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(99, 26);
+            this.label10.Location = new System.Drawing.Point(7, 16);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(134, 20);
             this.label10.TabIndex = 39;
@@ -367,10 +386,10 @@ namespace AuditWFA
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Ivory;
+            this.groupBox1.Controls.Add(this.gB_ChZnType);
+            this.groupBox1.Controls.Add(this.gB_CalendarType);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.dtp_Teach);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.courseLabel);
@@ -401,13 +420,117 @@ namespace AuditWFA
             this.groupBox2.TabIndex = 41;
             this.groupBox2.TabStop = false;
             // 
+            // dropList_Schedule
+            // 
+            this.dropList_Schedule.FormattingEnabled = true;
+            this.dropList_Schedule.Items.AddRange(new object[] {
+            "Понедельник",
+            "Вторник",
+            "Среда",
+            "Четверг",
+            "Пятница",
+            "Суббота",
+            "Воскресенье"});
+            this.dropList_Schedule.Location = new System.Drawing.Point(144, 19);
+            this.dropList_Schedule.Name = "dropList_Schedule";
+            this.dropList_Schedule.Size = new System.Drawing.Size(121, 21);
+            this.dropList_Schedule.TabIndex = 38;
+            this.dropList_Schedule.TextChanged += new System.EventHandler(this.dropList_Schedule_TextChanged);
+            // 
+            // chck_Ch
+            // 
+            this.chck_Ch.AutoSize = true;
+            this.chck_Ch.Checked = true;
+            this.chck_Ch.Location = new System.Drawing.Point(285, 10);
+            this.chck_Ch.Name = "chck_Ch";
+            this.chck_Ch.Size = new System.Drawing.Size(80, 17);
+            this.chck_Ch.TabIndex = 39;
+            this.chck_Ch.TabStop = true;
+            this.chck_Ch.Text = "Числитель";
+            this.chck_Ch.UseVisualStyleBackColor = true;
+            this.chck_Ch.CheckedChanged += new System.EventHandler(this.chck_Ch_CheckedChanged);
+            // 
+            // chck_Zn
+            // 
+            this.chck_Zn.AutoSize = true;
+            this.chck_Zn.Location = new System.Drawing.Point(285, 32);
+            this.chck_Zn.Name = "chck_Zn";
+            this.chck_Zn.Size = new System.Drawing.Size(93, 17);
+            this.chck_Zn.TabIndex = 40;
+            this.chck_Zn.Text = "Знаменатель";
+            this.chck_Zn.UseVisualStyleBackColor = true;
+            this.chck_Zn.CheckedChanged += new System.EventHandler(this.chck_Zn_CheckedChanged);
+            // 
+            // настройкиToolStripMenuItem
+            // 
+            this.настройкиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.выборДатыToolStripMenuItem});
+            this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.настройкиToolStripMenuItem.Text = "Настройки";
+            // 
+            // выборДатыToolStripMenuItem
+            // 
+            this.выборДатыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.календарьToolStripMenuItem,
+            this.числЗнамToolStripMenuItem});
+            this.выборДатыToolStripMenuItem.Name = "выборДатыToolStripMenuItem";
+            this.выборДатыToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.выборДатыToolStripMenuItem.Text = "Выбор даты";
+            // 
+            // календарьToolStripMenuItem
+            // 
+            this.календарьToolStripMenuItem.Name = "календарьToolStripMenuItem";
+            this.календарьToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.календарьToolStripMenuItem.Text = "Календарь";
+            this.календарьToolStripMenuItem.Click += new System.EventHandler(this.календарьToolStripMenuItem_Click);
+            // 
+            // числЗнамToolStripMenuItem
+            // 
+            this.числЗнамToolStripMenuItem.Name = "числЗнамToolStripMenuItem";
+            this.числЗнамToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.числЗнамToolStripMenuItem.Text = "Числ/Знам";
+            this.числЗнамToolStripMenuItem.Click += new System.EventHandler(this.числЗнамToolStripMenuItem_Click);
+            // 
+            // gB_CalendarType
+            // 
+            this.gB_CalendarType.Controls.Add(this.label10);
+            this.gB_CalendarType.Controls.Add(this.dtp_Teach);
+            this.gB_CalendarType.Location = new System.Drawing.Point(74, 13);
+            this.gB_CalendarType.Name = "gB_CalendarType";
+            this.gB_CalendarType.Size = new System.Drawing.Size(372, 52);
+            this.gB_CalendarType.TabIndex = 40;
+            this.gB_CalendarType.TabStop = false;
+            // 
+            // gB_ChZnType
+            // 
+            this.gB_ChZnType.Controls.Add(this.label1);
+            this.gB_ChZnType.Controls.Add(this.chck_Zn);
+            this.gB_ChZnType.Controls.Add(this.dropList_Schedule);
+            this.gB_ChZnType.Controls.Add(this.chck_Ch);
+            this.gB_ChZnType.Location = new System.Drawing.Point(74, 15);
+            this.gB_ChZnType.Name = "gB_ChZnType";
+            this.gB_ChZnType.Size = new System.Drawing.Size(383, 50);
+            this.gB_ChZnType.TabIndex = 41;
+            this.gB_ChZnType.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(2, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(136, 20);
+            this.label1.TabIndex = 41;
+            this.label1.Text = "Выберите День: ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(550, 800);
+            this.ClientSize = new System.Drawing.Size(550, 804);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gB_Schedule);
@@ -427,6 +550,10 @@ namespace AuditWFA
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.gB_CalendarType.ResumeLayout(false);
+            this.gB_CalendarType.PerformLayout();
+            this.gB_ChZnType.ResumeLayout(false);
+            this.gB_ChZnType.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -466,5 +593,15 @@ namespace AuditWFA
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btt_DeleteSchLine;
+        private System.Windows.Forms.RadioButton chck_Zn;
+        private System.Windows.Forms.RadioButton chck_Ch;
+        private System.Windows.Forms.ComboBox dropList_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem выборДатыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem календарьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem числЗнамToolStripMenuItem;
+        private System.Windows.Forms.GroupBox gB_ChZnType;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox gB_CalendarType;
     }
 }

@@ -47,6 +47,7 @@
             this.btt_Save = new System.Windows.Forms.Button();
             this.btt_Clear = new System.Windows.Forms.Button();
             this.gB_Adding = new System.Windows.Forms.GroupBox();
+            this.btt_HidePart = new System.Windows.Forms.Button();
             this.chck_Security = new System.Windows.Forms.CheckBox();
             this.chck_Condition = new System.Windows.Forms.CheckBox();
             this.chck_Projector = new System.Windows.Forms.CheckBox();
@@ -61,7 +62,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_PlacesAdd = new System.Windows.Forms.TextBox();
-            this.btt_HidePart = new System.Windows.Forms.Button();
             this.gB_Editing.SuspendLayout();
             this.gB_Adding.SuspendLayout();
             this.SuspendLayout();
@@ -133,6 +133,7 @@
             this.txt_Places.Name = "txt_Places";
             this.txt_Places.Size = new System.Drawing.Size(177, 26);
             this.txt_Places.TabIndex = 7;
+            this.txt_Places.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Places_KeyPress);
             // 
             // txt_Projector
             // 
@@ -165,6 +166,7 @@
             this.txt_PCs.Name = "txt_PCs";
             this.txt_PCs.Size = new System.Drawing.Size(177, 26);
             this.txt_PCs.TabIndex = 16;
+            this.txt_PCs.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Places_KeyPress);
             // 
             // ComputersLabel
             // 
@@ -214,9 +216,9 @@
             // 
             // btt_Delete
             // 
-            this.btt_Delete.Location = new System.Drawing.Point(85, 351);
+            this.btt_Delete.Location = new System.Drawing.Point(64, 355);
             this.btt_Delete.Name = "btt_Delete";
-            this.btt_Delete.Size = new System.Drawing.Size(75, 23);
+            this.btt_Delete.Size = new System.Drawing.Size(96, 23);
             this.btt_Delete.TabIndex = 25;
             this.btt_Delete.Text = "Удалить";
             this.btt_Delete.UseVisualStyleBackColor = true;
@@ -225,19 +227,19 @@
             // 
             // btt_Edit
             // 
-            this.btt_Edit.Location = new System.Drawing.Point(85, 264);
+            this.btt_Edit.Location = new System.Drawing.Point(64, 268);
             this.btt_Edit.Name = "btt_Edit";
-            this.btt_Edit.Size = new System.Drawing.Size(75, 23);
+            this.btt_Edit.Size = new System.Drawing.Size(96, 23);
             this.btt_Edit.TabIndex = 19;
-            this.btt_Edit.Text = "Изменить";
+            this.btt_Edit.Text = "Редактировать";
             this.btt_Edit.UseVisualStyleBackColor = true;
             this.btt_Edit.Click += new System.EventHandler(this.btt_Edit_Click);
             // 
             // btt_Save
             // 
-            this.btt_Save.Location = new System.Drawing.Point(85, 293);
+            this.btt_Save.Location = new System.Drawing.Point(64, 297);
             this.btt_Save.Name = "btt_Save";
-            this.btt_Save.Size = new System.Drawing.Size(75, 23);
+            this.btt_Save.Size = new System.Drawing.Size(96, 23);
             this.btt_Save.TabIndex = 20;
             this.btt_Save.Text = "Сохранить";
             this.btt_Save.UseVisualStyleBackColor = true;
@@ -246,9 +248,9 @@
             // 
             // btt_Clear
             // 
-            this.btt_Clear.Location = new System.Drawing.Point(85, 322);
+            this.btt_Clear.Location = new System.Drawing.Point(64, 326);
             this.btt_Clear.Name = "btt_Clear";
-            this.btt_Clear.Size = new System.Drawing.Size(75, 23);
+            this.btt_Clear.Size = new System.Drawing.Size(96, 23);
             this.btt_Clear.TabIndex = 22;
             this.btt_Clear.Text = "Очистить";
             this.btt_Clear.UseVisualStyleBackColor = true;
@@ -277,6 +279,16 @@
             this.gB_Adding.Size = new System.Drawing.Size(328, 384);
             this.gB_Adding.TabIndex = 18;
             this.gB_Adding.TabStop = false;
+            // 
+            // btt_HidePart
+            // 
+            this.btt_HidePart.Location = new System.Drawing.Point(216, 308);
+            this.btt_HidePart.Name = "btt_HidePart";
+            this.btt_HidePart.Size = new System.Drawing.Size(75, 23);
+            this.btt_HidePart.TabIndex = 27;
+            this.btt_HidePart.Text = "Скрыть";
+            this.btt_HidePart.UseVisualStyleBackColor = true;
+            this.btt_HidePart.Click += new System.EventHandler(this.btt_HidePart_Click);
             // 
             // chck_Security
             // 
@@ -331,6 +343,7 @@
             this.txt_PCsAdd.Name = "txt_PCsAdd";
             this.txt_PCsAdd.Size = new System.Drawing.Size(86, 26);
             this.txt_PCsAdd.TabIndex = 16;
+            this.txt_PCsAdd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Places_KeyPress);
             // 
             // label2
             // 
@@ -411,16 +424,7 @@
             this.txt_PlacesAdd.Name = "txt_PlacesAdd";
             this.txt_PlacesAdd.Size = new System.Drawing.Size(86, 26);
             this.txt_PlacesAdd.TabIndex = 7;
-            // 
-            // btt_HidePart
-            // 
-            this.btt_HidePart.Location = new System.Drawing.Point(216, 308);
-            this.btt_HidePart.Name = "btt_HidePart";
-            this.btt_HidePart.Size = new System.Drawing.Size(75, 23);
-            this.btt_HidePart.TabIndex = 27;
-            this.btt_HidePart.Text = "Скрыть";
-            this.btt_HidePart.UseVisualStyleBackColor = true;
-            this.btt_HidePart.Click += new System.EventHandler(this.btt_HidePart_Click);
+            this.txt_PlacesAdd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Places_KeyPress);
             // 
             // InfoForm
             // 

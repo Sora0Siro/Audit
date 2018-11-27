@@ -18,10 +18,12 @@ namespace AuditWFA
         private Dictionary<string, List<List<string>>> dc;
         private List<string> localList;
         private bool permissAdd = true;
+        private bool scheduleTypeCalendar = false;
         private string FacultiesDirectory;
         private string AuditoriesPath;
         private string FullDirectory;
         private string dayScheduleInfo_Path;
+        private string scheduleFileName; //день недели + тип недели
         private List<Teacher> teachers;
         private Dictionary<string, List<string>> coursesDC;
         private Dictionary<string, Dictionary<string, List<string>>> cathDC;
@@ -32,6 +34,7 @@ namespace AuditWFA
         public Form1()
         {
             InitializeComponent();
+            hideCalendarType();
 
             FullDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\DataBase";
             AuditoriesPath = FullDirectory + "\\Auditories.txt";
@@ -211,7 +214,7 @@ namespace AuditWFA
 
                 for (int i = 0; i < auditories.Length; i++)
                 {
-                    if (auditories[i].Contains("ауд.") || auditories[i].Contains("лаб.") || auditories[i].Contains("ОЦ"))
+                    if (auditories[i].Contains("ауд.") || auditories[i].Contains("лаб.") || auditories[i].Contains("ОЦ") || auditories[i].Contains("оц"))
                     {
                         tmpKey = auditories[i];
                     }
@@ -237,7 +240,7 @@ namespace AuditWFA
             }
             catch(FileNotFoundException e)
             {
-                MessageBox.Show("File was not found");
+                MessageBox.Show("Файл не был найден");
             }
         }
 
@@ -362,6 +365,33 @@ namespace AuditWFA
             }
         }
 
+        private void календарьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            actScheduleTypes();
+            loadSchedule();
+        }
+
+        private void числЗнамToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            actScheduleTypes();
+            loadSchedule();
+        }
+
+        private void chck_Ch_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chck_Zn_CheckedChanged(object sender, EventArgs e)
+        {
+            loadSchedule();
+        }
+
+        private void dropList_Schedule_TextChanged(object sender, EventArgs e)
+        {
+            loadSchedule();
+        }
+
         //clear
         public void clearFields()
         {
@@ -377,6 +407,20 @@ namespace AuditWFA
             dropList_Course.Text = "";
         }
 
+        private void hideCalendarType()
+        {
+            gB_CalendarType.Visible = false;
+            scheduleTypeCalendar = false;
+            gB_ChZnType.Visible = true;
+        }
+
+        private void hideChZnType()
+        {
+            gB_ChZnType.Visible = false;
+            scheduleTypeCalendar = true;
+            gB_CalendarType.Visible = true;
+        }
+
         //check
         private bool checkFieldsForScheduleTable()
         {
@@ -389,6 +433,20 @@ namespace AuditWFA
             {
                 return !state;
             }
+        }
+
+        private string getWeekState()
+        {
+            string stateOfWeek = "";
+            if (chck_Ch.Checked)
+            {
+                stateOfWeek = chck_Ch.Text;
+            }
+            else if (chck_Zn.Checked)
+            {
+                stateOfWeek = chck_Zn.Text;
+            }
+            return stateOfWeek;
         }
 
         //files
@@ -416,42 +474,65 @@ namespace AuditWFA
 
         private void loadSchedule()
         {
+            bool gotFilePath = false;
+
             dc.Clear();
             if (checkFieldsForScheduleTable())
             {
                 Table.Rows.Clear();
                 Table.Refresh();
-                dayScheduleInfo_Path = FacultiesDirectory + "\\" + dropList_Faculty.Text + "\\" + dropList_Cath.Text + "\\Schedule\\" + dtp_Teach.Text + ".txt";
-
-                if (File.Exists(dayScheduleInfo_Path))
+                
+                if (scheduleTypeCalendar)
                 {
-                    string[] conts = File.ReadAllLines(dayScheduleInfo_Path, Encoding.Unicode);
-                    List<string> list = new List<string>();
-
-                    //column < Table.ColumnCount
-                    for (int i = 0; i < conts.Length; i++)
+                    dayScheduleInfo_Path = FacultiesDirectory + "\\" + dropList_Faculty.Text + "\\" + dropList_Cath.Text + "\\Schedule\\" + dtp_Teach.Text + ".txt";
+                    gotFilePath = true;
+                }
+                else if (!scheduleTypeCalendar)
+                {
+                    if (dropList_Schedule.Text == " " || dropList_Schedule.Text == "")
                     {
-                        if (conts[i] != "")
-                        {
-                            list.Add(conts[i]);
-                        }
-                        else if(conts[i] == "" && list.Count > 0)
-                        {
-                            addToDC(list[0],list);
-                            Table.Rows.Add(list[0], list[1], list[2], list[3], list[4]);
-                            list.Clear();
-                        }
+                        gotFilePath = false;
+                    }
+                    else if (dropList_Schedule.Text != " " && dropList_Schedule.Text != "")
+                    {
+                        scheduleFileName = dropList_Schedule.Text + " " + getWeekState();
+                        dayScheduleInfo_Path = FacultiesDirectory + "\\" + dropList_Faculty.Text + "\\" + dropList_Cath.Text + "\\Schedule\\" + scheduleFileName + ".txt";
+                        gotFilePath = true;
                     }
                 }
-                else
+                
+                if(gotFilePath)
                 {
-                    MessageBox.Show("Расписание на данный день отсутствует");
-                    //File.Create(dayScheduleInfo_Path);
+                    if (File.Exists(dayScheduleInfo_Path))
+                    {
+                        string[] conts = File.ReadAllLines(dayScheduleInfo_Path, Encoding.Unicode);
+                        List<string> list = new List<string>();
+
+                        //column < Table.ColumnCount
+                        for (int i = 0; i < conts.Length; i++)
+                        {
+                            if (conts[i] != "")
+                            {
+                                list.Add(conts[i]);
+                            }
+                            else if (conts[i] == "" && list.Count > 0)
+                            {
+                                addToDC(list[0], list);
+                                Table.Rows.Add(list[0], list[1], list[2], list[3], list[4]);
+                                list.Clear();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Расписание на данный день отсутствует");
+                        //File.Create(dayScheduleInfo_Path);
+                    }
                 }
+
             }
             else
             {
-                
                 if(dropList_Faculty.Text == " " || dropList_Faculty.Text == null)
                 {
                     MessageBox.Show("Выберите факультет");
@@ -461,7 +542,19 @@ namespace AuditWFA
                     MessageBox.Show("Выберите кафедру");
                 }
             }
-        }        
+        }
+
+        private void actScheduleTypes()
+        {
+            if(gB_CalendarType.Visible)
+            {
+                hideCalendarType();
+            }
+            else if(gB_ChZnType.Visible)
+            {
+                hideChZnType();
+            }
+        }
     }
 }
 

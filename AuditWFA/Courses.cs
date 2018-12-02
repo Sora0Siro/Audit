@@ -42,11 +42,14 @@ namespace AuditWFA
 
                 foreach(string cathedra in cathedras)
                 {
+                    
                     string[] tm = File.ReadAllLines(cathedra + "\\courses.txt", Encoding.Unicode);
                     courseLogic(tm, coursesDC);
                     cathDC.Add(Path.GetFileName(cathedra), coursesDC);
+                    coursesDC = new Dictionary<string, List<string>>();
                 }
                 facultDC.Add(Path.GetFileName(faculty), cathDC);
+                cathDC = new Dictionary<string, Dictionary<string, List<string>>>();
             }
         }
 

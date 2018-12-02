@@ -253,13 +253,6 @@ namespace AuditWFA
             this.textField_Number.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.textField_Number.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textField_Number.FormattingEnabled = true;
-            this.textField_Number.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6"});
             this.textField_Number.Location = new System.Drawing.Point(384, 162);
             this.textField_Number.Name = "textField_Number";
             this.textField_Number.Size = new System.Drawing.Size(119, 26);

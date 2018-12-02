@@ -25,6 +25,7 @@ namespace AuditWFA
         private Dictionary<string, Dictionary<string, List<string>>> cathDC;
         private Dictionary<string, Dictionary<string, Dictionary<string, List<string>>>> facultDC;
         private Dictionary<string, List<string>> auditoriesDC;
+        private string[] numbers = { "1", "2", "3", "4", "5", "6", "7" };
 
         //construct
         public Form1()
@@ -45,8 +46,7 @@ namespace AuditWFA
             setAuditoriesFromFile();
 
             Courses c = new Courses();
-            c.ReadAllCourses(coursesDC, cathDC, facultDC,FacultiesDirectory);
-
+            c.ReadAllCourses(coursesDC, cathDC, facultDC, FacultiesDirectory);
             setFacultiesNew();
         }
 
@@ -151,6 +151,7 @@ namespace AuditWFA
         //sets
         public void setTeacherInfo(string path)
         {
+            textField_Teacher.Items.Clear();
             teachers = new List<Teacher>();
             foreach (string file in Directory.EnumerateFiles(path, "*.txt"))
             {
@@ -175,6 +176,7 @@ namespace AuditWFA
 
         public void setFacultiesNew()
         {
+            dropList_Faculty.Items.Clear();
             foreach (KeyValuePair<string, Dictionary<string, Dictionary<string, List<string>>>> facult in facultDC)
             {
                 dropList_Faculty.Items.Add(facult.Key);
@@ -183,17 +185,18 @@ namespace AuditWFA
 
         public void setDropList_Course()
         {
-            foreach (KeyValuePair<string, Dictionary<string, List<string>>> cathedr in facultDC[dropList_Faculty.Text])
+            dropList_Course.Items.Clear();
+
+            foreach (KeyValuePair<string, List<string>> cathedr in facultDC[dropList_Faculty.Text][dropList_Cath.Text])
             {
-                foreach (KeyValuePair<string, List<string>> course in cathedr.Value)
-                {
-                    dropList_Course.Items.Add(course.Key);
-                }
+                dropList_Course.Items.Add(cathedr.Key);
             }
+
         }
 
         public void setCathedras()
         {
+            dropList_Cath.Items.Clear();
             foreach (KeyValuePair<string, Dictionary<string, List<string>>> cathedr in facultDC[dropList_Faculty.Text])
             {
                 dropList_Cath.Items.Add(cathedr.Key);
@@ -249,6 +252,15 @@ namespace AuditWFA
             }
         }
 
+        private void setDropListNumber()
+        {
+            textField_Number.Items.Clear();
+            foreach(string s in numbers)
+            {
+                textField_Number.Items.Add(s);
+            }
+        }
+
         private void addToDC(string key, List<string> list)
         {
             List<string> tmp = list.ToList<string>();
@@ -292,7 +304,8 @@ namespace AuditWFA
         private void dropList_Course_TextChanged(object sender, EventArgs e)
         {
             textField_Group.Items.Clear();
-            foreach(string s in coursesDC[dropList_Course.Text])
+
+            foreach (string s in facultDC[dropList_Faculty.Text][dropList_Cath.Text][dropList_Course.Text])
             {
                 textField_Group.Items.Add(s);
             }
@@ -302,6 +315,7 @@ namespace AuditWFA
         private void dropList_Cath_TextChanged(object sender, EventArgs e)
         {
             clearFields();
+            clearDropLists();
             //file = faculty dir + choosed cathedra
             //teachers from file
             //courses/groups from file
@@ -318,12 +332,18 @@ namespace AuditWFA
                 }
             }
             setDropList_Course();
+            setDropListAuditories();
+            setDropListNumber();
+            //setCourses
+
             loadSchedule();
-            //Table.column
         }
 
         private void dropList_Faculty_TextChanged(object sender, EventArgs e)
         {
+            //clearFields();
+            clearDropLists();
+            clearTable();
             setCathedras();
         }
 
@@ -340,6 +360,7 @@ namespace AuditWFA
             inf.FormClosed += Inf_FormClosed;
             inf.ShowDialog();
         }
+
         private void Inf_FormClosed(object sender, FormClosedEventArgs e)
         {
             //throw new NotImplementedException();
@@ -399,6 +420,16 @@ namespace AuditWFA
             textField_Number.Text = "";
         }
 
+        public void clearDropLists()
+        {
+            dropList_Course.Items.Clear();
+            textField_Teacher.Items.Clear();
+            textField_Subject.Items.Clear();
+            textField_Group.Items.Clear();
+            textField_Aud.Items.Clear();
+            textField_Number.Items.Clear();
+        }
+
         public void clearCourseField()
         {
             dropList_Course.Text = "";
@@ -416,6 +447,12 @@ namespace AuditWFA
             gB_ChZnType.Visible = false;
             scheduleTypeCalendar = true;
             gB_CalendarType.Visible = true;
+        }
+
+        private void clearTable()
+        {
+            Table.Rows.Clear();
+            Table.Refresh();
         }
 
         //check

@@ -451,9 +451,9 @@ namespace AuditWFA
             this.gB_ChZnType.Controls.Add(this.chck_Zn);
             this.gB_ChZnType.Controls.Add(this.dropList_Schedule);
             this.gB_ChZnType.Controls.Add(this.chck_Ch);
-            this.gB_ChZnType.Location = new System.Drawing.Point(94, 19);
+            this.gB_ChZnType.Location = new System.Drawing.Point(94, 17);
             this.gB_ChZnType.Name = "gB_ChZnType";
-            this.gB_ChZnType.Size = new System.Drawing.Size(383, 50);
+            this.gB_ChZnType.Size = new System.Drawing.Size(383, 52);
             this.gB_ChZnType.TabIndex = 41;
             this.gB_ChZnType.TabStop = false;
             // 

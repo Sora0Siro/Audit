@@ -102,7 +102,7 @@ namespace AuditWFA
             }
             else
             {
-                MessageBox.Show("ADD INFO");
+                MessageBox.Show("Некоторые поля незаполнены");
             }
             permissAdd = true;
         }
@@ -380,6 +380,10 @@ namespace AuditWFA
                 Table.Rows.RemoveAt(Table.CurrentRow.Index);
                 saveSchedule();
                 loadSchedule();
+            }
+            else
+            {
+                MessageBox.Show("Выберите строку для удаления пары.");
             }
         }
 

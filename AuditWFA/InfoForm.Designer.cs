@@ -184,6 +184,7 @@
             // 
             // gB_Editing
             // 
+            this.gB_Editing.BackColor = System.Drawing.Color.Ivory;
             this.gB_Editing.Controls.Add(this.btt_AuditoryNew);
             this.gB_Editing.Controls.Add(this.btt_Delete);
             this.gB_Editing.Controls.Add(this.btt_Edit);
@@ -201,9 +202,9 @@
             this.gB_Editing.Controls.Add(this.txt_Places);
             this.gB_Editing.Controls.Add(this.txt_Condition);
             this.gB_Editing.Controls.Add(this.txt_Projector);
-            this.gB_Editing.Location = new System.Drawing.Point(12, 12);
+            this.gB_Editing.Location = new System.Drawing.Point(12, -1);
             this.gB_Editing.Name = "gB_Editing";
-            this.gB_Editing.Size = new System.Drawing.Size(406, 384);
+            this.gB_Editing.Size = new System.Drawing.Size(406, 415);
             this.gB_Editing.TabIndex = 17;
             this.gB_Editing.TabStop = false;
             // 
@@ -263,6 +264,7 @@
             // 
             // gB_Adding
             // 
+            this.gB_Adding.BackColor = System.Drawing.Color.Ivory;
             this.gB_Adding.Controls.Add(this.btt_HidePart);
             this.gB_Adding.Controls.Add(this.chck_Security);
             this.gB_Adding.Controls.Add(this.chck_Condition);
@@ -278,9 +280,9 @@
             this.gB_Adding.Controls.Add(this.label5);
             this.gB_Adding.Controls.Add(this.label6);
             this.gB_Adding.Controls.Add(this.txt_PlacesAdd);
-            this.gB_Adding.Location = new System.Drawing.Point(433, 12);
+            this.gB_Adding.Location = new System.Drawing.Point(433, -1);
             this.gB_Adding.Name = "gB_Adding";
-            this.gB_Adding.Size = new System.Drawing.Size(328, 384);
+            this.gB_Adding.Size = new System.Drawing.Size(359, 415);
             this.gB_Adding.TabIndex = 18;
             this.gB_Adding.TabStop = false;
             // 
@@ -434,7 +436,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(770, 411);
+            this.BackColor = System.Drawing.Color.CadetBlue;
+            this.ClientSize = new System.Drawing.Size(804, 411);
             this.Controls.Add(this.gB_Adding);
             this.Controls.Add(this.gB_Editing);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

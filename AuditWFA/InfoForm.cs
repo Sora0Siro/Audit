@@ -268,7 +268,7 @@ namespace AuditWFA
 
         private void setExtendedWindowSize()
         {
-            this.Width = 785;
+            this.Width = 820;
         }
 
         private void setFields()
